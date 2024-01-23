@@ -1,0 +1,51 @@
+# GIT e GITHUB
+
+## Principais Comandos
+git config --list \
+Para listar as configurações atuais do diretório
+
+git config --global user.name "usuariodogithub" \
+Para conectar ao usuário do git hub
+
+git config --global user.email "seuemail" \
+Para conectar ao e-mail do github
+
+git remote add origin link_para_o_repositório_do_seu_projeto \
+Ligar o seu repositório local ao remoto
+
+git clone \
+Para clonar o repositório na sua máquina local
+
+git pull \
+Para atualizar o repositório local com a ultima versão do remoto
+
+git push \
+Para enviar a versão local do repositório para o remoto
+
+Fork (github) \
+Utilizar o fork no Github para salvar uma versão de um repositório no seu repositório
+
+Pull Request (github) \
+Quando fazemos uma alteração no repositório forkado e queremos enviar para o original. É uma requisição para o dono do repositório aceitar ou não!
+
+git status \
+verificar o sttaus dos arquivos e pastas dentro no nosso repositório local
+
+git add . \
+Para adicionar todos os arquivos na esteira do commit
+
+git add "nome do arquivo" \
+Para adicionar apenas um arquivo especifico na esteira do commit
+
+git commit -m "comentários" \
+Salvar última versão no repositório local com o comentário do que são as modificações deste commit.
+
+## Navegação Pastas
+dir \
+Listar as pastas de um diretório
+
+cd \
+Entrar em uma pasta
+
+...// \
+Voltar para o nível anterior da pasta
