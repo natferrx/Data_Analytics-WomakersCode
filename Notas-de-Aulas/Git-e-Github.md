@@ -47,5 +47,6 @@ Listar as pastas de um diretório
 cd \
 Entrar em uma pasta
 
-...// \
+cd ..\ \
 Voltar para o nível anterior da pasta
+
