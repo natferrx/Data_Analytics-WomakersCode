@@ -49,6 +49,15 @@ Verificar quantas e quais branchs temos
 git merge nomebranch \
 Para unir as branches após feita o Pull Request no Github
 
+git branch -d nome_do_ramo \
+Para excluir uma branch local
+
+git push origin --delete nome_do_ramo \
+Para excluir uma branch remoto
+
+git log --merges \
+Para visualizar os commits de merge
+
 ## Navegação Pastas
 dir \
 Listar as pastas de um diretório
@@ -62,7 +71,7 @@ Voltar para o nível anterior da pasta
 ## Outros Conceitos
 
 Branch \
-É uma ramificação do repositório, muito utilizado para trabalhar um uma parte especifica do código e depois testar para unir na main.
+De maneira simplificada, os ramos (branches) no Git são semelhantes a um ramo de uma árvore, onde o tronco seria a base do código. Desse modo é possível criar diversos ramos e fazer alterações, enquanto a base permanece intacta. Por padrão o ramo principal é denominado de main!
 
 É possível criar e apagar Branchs pelo Github. \
 
