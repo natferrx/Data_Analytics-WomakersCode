@@ -40,6 +40,15 @@ Para adicionar apenas um arquivo especifico na esteira do commit
 git commit -m "comentários" \
 Salvar última versão no repositório local com o comentário do que são as modificações deste commit.
 
+git checkout -b nomebranch \
+Criar uma nova Branch
+
+git branch \
+Verificar quantas e quais branchs temos
+
+git merge nomebranch \
+Para unir as branches após feita o Pull Request no Github
+
 ## Navegação Pastas
 dir \
 Listar as pastas de um diretório
@@ -49,4 +58,11 @@ Entrar em uma pasta
 
 cd ..\ \
 Voltar para o nível anterior da pasta
+
+## Outros Conceitos
+
+Branch \
+É uma ramificação do repositório, muito utilizado para trabalhar um uma parte especifica do código e depois testar para unir na main.
+
+É possível criar e apagar Branchs pelo Github. \
 
