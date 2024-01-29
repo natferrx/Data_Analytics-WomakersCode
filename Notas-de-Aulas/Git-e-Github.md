@@ -68,10 +68,20 @@ Entrar em uma pasta
 cd ..\ \
 Voltar para o nível anterior da pasta
 
-## Outros Conceitos
+## Branch
 
 Branch \
 De maneira simplificada, os ramos (branches) no Git são semelhantes a um ramo de uma árvore, onde o tronco seria a base do código. Desse modo é possível criar diversos ramos e fazer alterações, enquanto a base permanece intacta. Por padrão o ramo principal é denominado de main!
 
 É possível criar e apagar Branchs pelo Github. \
 
+## Colaborando com projetos de outras pessoas
+
+Fork \
+Ao entrar no Github e dar um Fork você estará fazendo uma cópia daquele repositório na sua conta.
+
+Atualizar o Fork \
+Para manter o seu Fork atualizado é possivel comparar os repositórios no Github e depois solicitar um Pull Request e fazer a mesclagem.
+
+Pull Request \
+É a forma de enviar as suas alterações para o repositório original. É recomendado criar uma branch para depois enviar as alterações.
