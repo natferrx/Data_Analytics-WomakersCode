@@ -1,4 +1,4 @@
-#PROJETO 1 - Aplicação conceitos iniciais Python
+#PRÁTICA 1 - Aplicação conceitos iniciais Python
 
 '''
 1. Faça um Programa que peça dois números e realize as principais operações: 
