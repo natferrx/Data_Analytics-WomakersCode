@@ -174,4 +174,107 @@ Esse processo é inspirado no algoritmo de bubble sort, onde as comparações e 
 
 ## Orientação a Objetos
 
+### Módulo, Namespaces, Pacotes e Escopos
 
+Módulo  
+São locais onde você define os nomes e funções que quer que fiquem visíveis para o resto do sistema  
+É a caixinha, o arquivo!
+
+Namespaces  
+Local de definição de nomes.  
+É o conteudo dentro do módulo
+
+Na pratica é possível criar um módulo (um arquivo .py) que posso reutilizar em outro arquivo.  
+Para utilizar um módulo em outro arquivo, utilizamos o "import" + nome_do_modulo. 
+
+Exemplo:
+
+funcoes_de_log.py
+
+```python
+nome_de_usuario = "Dori"
+
+def imprimir_no_log(texto):
+    print(f'{texto}')
+```
+
+import.py
+
+```python
+import funcoes_de_log
+
+funcoes_de_log.imprimir_no_log(f'Bem vinda, {funcoes_do_log.nome_de_usuaria}')
+```
+
+Para não precisar ficar colocando o nome_do_modulo.nome_do_namespace() é possível importar da seguinte maneira:
+
+```python
+from funcoes_do_log import nome_de_usuario, imprimir_no_log
+```
+Dessa forma já informamos qual namespace queremos importar e não precisamos mais chamar o nome do módulo ao longo do código. É possível utilzar * para importar todos os namespaces daquele módulo, mas não é considerado boa prática devido a performance caso não utlilite tudo.
+
+
+
+### Pacotes
+
+* Existem muitos módulos prontos, como o datetime, que retorna a hora de agora.
+
+Estes módulos ficam dentro de Pacotes (ou também chamado de Bibliotecas). Um exemplo famoso é o Pandas e o Numpy. Esses pacote já contem vários módulos prontos de análise de dados!
+
+python package index  
+É um ótimo lugar para consultar bibliotecas de Python.
+
+* Como utilizar um pacote?
+
+pip install  
+instalar um pacote individualmente  
+Ps.: Deve ser utilizado no terminal e não no código.
+
+pip install -r requirements.txt
+instalar uma lista de pacotes
+
+import
+
+exemplo:  
+(no terminal) pip install colorama  
+(no início do código) import colorama
+
+### Escopo
+
+variáveis locais  
+variáriaveis declaradas dentro de uma função, não podem ser acessadas de fora dela, spo existe dentro do escopo.
+
+variais globais  
+variáveis declaradas fora de qualquer função, elas se encontram em um escopo que é acessível em qualquer parte do seu script e também por outro módulos.
+
+Se quisermos alterar uma variável global
+
+### Classes e Objetos
+
+#### Programação orientada a objetos (POO)
+É um paradigma de programação que modela os dados e comportamentos como se fossem objetos do mundo real.
+Objetos possuem em geral dois componentes:
+- Propriedades  
+Exemplo: Ligado/desligado, canal, volume máximo e mínimo
+- Comportamentos  
+Exemplo: mudar canal, volume para cima/baixo, ligar/desligar.
+
+```python
+televisao.ligar()
+televisao.mudar_canal_para_cima()
+televisao.aumentar_volume()
+```
+
+POO traz novos conceitos para a linguagem:  
+classes, heranças, encapsulamento, abstrações e polimorfismo.
+
+#### Classes (class)
+ 
+Classes descrevem o que um objeto vai ser, mas elas não criam o objeto.
+
+- Toda classe tem um método especial chamado construtor.  
+O método especial __init__ será chamado sempre que criamos um novo objeto do tipo da classe.
+
+- Método são funções definidas dentro da classe.
+
+- O primeiro parâmetro do método é chamado self e representa a instância sobre a qual o método atuará. Utiliza o self para definir propriedades do próprio objeto.
