@@ -278,3 +278,18 @@ O método especial __init__ será chamado sempre que criamos um novo objeto do t
 - Método são funções definidas dentro da classe.
 
 - O primeiro parâmetro do método é chamado self e representa a instância sobre a qual o método atuará. Utiliza o self para definir propriedades do próprio objeto.
+
+#### Encapsulamento
+
+Por padrão os atributos e métodos das classes são publicos. Por isso, para indicar quais atributos e mpetodos não deve alterar na classe, nós utilizamos convenções em seus nomes.  
+Existem duas convenções para iniciar nomes de métodos e atributos em Python:
+
+- _ (underscore), nomes iniciados por "_" são protegidos e não devem ser acessados pelo mundo externo a não ser que o usuário saiba exatamente o que está fazendo, ou seja, ainda pode existir algum caso de uso.
+- __ (underscore duplo), nomes iniciados por "__" são privados e não devem ser acessados pelo mundo externo de forma nenhuma. 
+
+#### Propriedades
+
+Dão acessos a variáveis que se parecem com atributos, mas na verdade usam métodos pór trás dos planos. Eles podem ser usados para reforçar a privacidade das classes.  
+Utilizamos um "@"  para definir uma propriedade.
+
+
