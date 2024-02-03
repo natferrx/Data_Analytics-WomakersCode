@@ -292,4 +292,32 @@ Existem duas convenções para iniciar nomes de métodos e atributos em Python:
 Dão acessos a variáveis que se parecem com atributos, mas na verdade usam métodos pór trás dos planos. Eles podem ser usados para reforçar a privacidade das classes.  
 Utilizamos um "@"  para definir uma propriedade.
 
+#### Tipagem Pato (Duck Typing)
+
+Mesma variável pode ser associado a tipos diferentes.  
+Por exemplo,  
+```python
+a = 1
+print(type(a))
+
+a = "Maria"
+print(type(a))
+
+#resultado
+<class 'int'>
+<class 'str'>
+```
+
+#### Erros e exceções
+
+Tipos de erros: 
+- Erro de Sintaxe, quando esquece um ":", uma identação, quando usa um simbolo errado (= no lugar de ==, por exemplo), quando começa com aspas simples e fecha com aspas duplas, etc.
+
+- Exceção, quando algum usuário entra com algum valor que não é permitido, por exemplo. Podemos utilizar o try / except para lidar com exceção e apresentar uma mensagem para o usuário corrigir o input de dado.
+
+DEBUGING
+
+No VS Code podemos uzar a ferramenta do "Run and Debug".  
+Colocamos a break point (bolinha vermelha) na frente das linhas que queremos debugar.  
+Podemos apertar F5 para ir para o próximo break point ou F11 para entrar na lógica passo a passo.  
 
