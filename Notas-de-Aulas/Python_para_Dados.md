@@ -57,4 +57,24 @@ Muda dimensões. Exemplo, tenho uma array de 2 linhas e 3 colunas, posso pedir p
 
 ![alt text](image-2.png)
 
+### Tipos em Numpy
+
+- np.int64
+- np.int32
+- np.float64
+- np.float32
+- bool8
+
+#### para conferir o tipo
+utilizar o .dtype
+
+#### para converter um tipo
+utilizar , dtype=np.int32 ou utilizar o .astype(np.int32)
+
+### Indexação
+
+Sempre começa no zero. E vai até o último index menos 1.
+Então se eu tiver uma array de 1 dimensão e quiser os elementos array[2:4], vai ser do segundo elemento até o terceiro elemento.
+
+0 1 2 3 4 5, neste exemplo, iria pegar o 2 e 3.
 
