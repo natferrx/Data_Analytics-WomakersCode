@@ -78,3 +78,59 @@ Então se eu tiver uma array de 1 dimensão e quiser os elementos array[2:4], va
 
 0 1 2 3 4 5, neste exemplo, iria pegar o 2 e 3.
 
+## FIltragem
+
+### Mascara (mask)
+
+- Exemplo:
+
+```python
+pessoas_id_idade = np.array([[1,22],[2,21],[3,27],[4,26]])
+
+# Filtrando todas as linhas da segunda coluna, estamos conferindo quais valores são divisíveis por 2, ou serja, quais são par
+pessoas_id_idade[:,1]] % 2 == 0
+```
+
+array([True, False, False, True])
+
+- Exemplo 2:
+
+```python
+arr1 = np.array([1,2,3,4,5])
+
+#Descobrindo quais valores são pares
+mask = arr1 % 2 == 0
+mask
+```
+
+array([False, True, False, True, False])
+
+Exemplo 3:
+
+#Retornar somente as pessoas que tem mais de 21 anos de idade
+```python
+mask_maior21 = pessoas_id_idade([:,1] > 21)
+```
+
+
+### Indexação sofisticada (fancy indexing)
+
+Agora, através do Fancy Indexing, posso utilizar a mascara para retornar os valores do array
+
+Exemplo:
+
+```python
+arr1[mask]
+```
+
+array([2,4])
+
+Exemplo 2:
+
+#retornar quais os valores são maiores que 21 no exemplo 3 de mascaras
+```python
+pessoas_id_idade[mask_maior21]
+```
+
+array([[1, 22], [3, 27], [4,26]])
+
