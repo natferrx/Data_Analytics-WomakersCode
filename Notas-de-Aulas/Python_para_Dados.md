@@ -88,7 +88,7 @@ Então se eu tiver uma array de 1 dimensão e quiser os elementos array[2:4], va
 pessoas_id_idade = np.array([[1,22],[2,21],[3,27],[4,26]])
 
 # Filtrando todas as linhas da segunda coluna, estamos conferindo quais valores são divisíveis por 2, ou serja, quais são par
-pessoas_id_idade[:,1]] % 2 == 0
+pessoas_id_idade[[:,1]] % 2 == 0
 ```
 
 array([True, False, False, True])
@@ -190,4 +190,27 @@ A cada degrau vai acumulando a soma
 nome_array.cumsum(axis=0) -> Soma as linhas de forma cumulativa
 
 
+## Operação com Vetorização
 
+
+```python
+arr = np.array(["Hello","Meninas","Coders"])
+len(arr) > 5
+```
+
+Resultado:
+False  
+Ou seja, retorna se tem mais de 5 elementas na array como um todo
+
+```python
+vetorizar_len = np.vetorize(len)
+vetorizar_len(arr) > 5
+```
+
+Resultado:
+array([False, True, True])  
+Ou seja, retorna de o cada elemento tem mais de 5 caracteres
+
+## Salvar uma Array em um arquivo
+
+np.save('nome_do_arquivo.npy', nome_da_array)
