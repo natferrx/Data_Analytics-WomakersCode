@@ -134,3 +134,60 @@ pessoas_id_idade[mask_maior21]
 
 array([[1, 22], [3, 27], [4,26]])
 
+## Concatenação
+
+### Concatenar Linhas
+
+```python
+np.copncatenate((primeira_array,segunda_array))
+```
+por padrão é axis=0 (linha)
+
+### Concatenar Colunas
+
+```python
+np.concatenate((primeira_array,segunda_array), axis=1)
+```
+
+### Deletar linhas
+
+```python
+np.delete(nome_da_array, 2, axis=0)
+```
+Neste caso deletaria a terceira linha de uma array
+
+### Deletar colunas
+
+```python
+np.delete(nome_da_array, 1, axis=1)
+```
+Neste caso deletaria a segunda coluna da array
+
+## Calculo com Array
+
+#### SOMA
+- nome_array.sum() -> soma o array inteiro
+- nome_array.sum(axis=0) -> soma as linhas, sentido das colunas, o resultado vai ser uma array com quantidas das colunas
+- nome_array.sum(axis=1) -> soma as colunas, no sentido das linhas, o resultado vai ter a quantidade de linhas
+
+#### MAX e MIN
+- nome_array.min() -> minimo de todo o array
+- nome_array.max() -> maximo de todo o array
+- nome_array.min(axis=0) -> valor minimo de cada linha
+- nome_array.max(axis=1) -> valor maximo de cada coluna
+
+#### MEDIA
+- nome_array.mean() -> media de todos os elementos da array
+- nome_array.mean(axis=0) -> minimo de cada linha
+
+#### KEEDIMS
+
+Mantem as mesmas dimensões
+
+#### SOMA CUMULATIVA
+A cada degrau vai acumulando a soma
+
+nome_array.cumsum(axis=0) -> Soma as linhas de forma cumulativa
+
+
+
