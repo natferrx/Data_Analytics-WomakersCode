@@ -78,9 +78,9 @@ Então se eu tiver uma array de 1 dimensão e quiser os elementos array[2:4], va
 
 0 1 2 3 4 5, neste exemplo, iria pegar o 2 e 3.
 
-## FIltragem
+### FIltragem
 
-### Mascara (mask)
+#### Mascara (mask)
 
 - Exemplo:
 
@@ -113,7 +113,7 @@ mask_maior21 = pessoas_id_idade([:,1] > 21)
 ```
 
 
-### Indexação sofisticada (fancy indexing)
+#### Indexação sofisticada (fancy indexing)
 
 Agora, através do Fancy Indexing, posso utilizar a mascara para retornar os valores do array
 
@@ -134,36 +134,36 @@ pessoas_id_idade[mask_maior21]
 
 array([[1, 22], [3, 27], [4,26]])
 
-## Concatenação
+### Concatenação
 
-### Concatenar Linhas
+#### Concatenar Linhas
 
 ```python
 np.copncatenate((primeira_array,segunda_array))
 ```
 por padrão é axis=0 (linha)
 
-### Concatenar Colunas
+#### Concatenar Colunas
 
 ```python
 np.concatenate((primeira_array,segunda_array), axis=1)
 ```
 
-### Deletar linhas
+#### Deletar linhas
 
 ```python
 np.delete(nome_da_array, 2, axis=0)
 ```
 Neste caso deletaria a terceira linha de uma array
 
-### Deletar colunas
+#### Deletar colunas
 
 ```python
 np.delete(nome_da_array, 1, axis=1)
 ```
 Neste caso deletaria a segunda coluna da array
 
-## Calculo com Array
+### Calculo com Array
 
 #### SOMA
 - nome_array.sum() -> soma o array inteiro
@@ -190,7 +190,7 @@ A cada degrau vai acumulando a soma
 nome_array.cumsum(axis=0) -> Soma as linhas de forma cumulativa
 
 
-## Operação com Vetorização
+### Operação com Vetorização
 
 
 ```python
@@ -211,6 +211,124 @@ Resultado:
 array([False, True, True])  
 Ou seja, retorna de o cada elemento tem mais de 5 caracteres
 
-## Salvar uma Array em um arquivo
+### Salvar uma Array em um arquivo
 
 np.save('nome_do_arquivo.npy', nome_da_array)
+
+## Pandas
+
+O Pandas, um pacote Python dedicado à manipulação de dados, também possui funcionalidades para visualização de dados.
+
+Sua estrutura é fundamental em dois pacotes essenciais do Python: Numpy e Matplotlib.
+
+Enquanto o Numpy pferece objetos de matriz multidimensional para facilitar a minipulação de dados, o Matplotlib proporciona ao Pnadas capacidade robusta de visualização de dados.
+
+### Formato de Dados
+
+Tabela, também chamada de dados tabulares (ou dados retangulares).
+
+### Criar um Dataframe
+
+Uma das maneiras é utilizar dicionários e listas.
+
+```python
+dados = {
+    'Nome': ['Max', 'Bella', 'Rocky', 'Luna'],
+    'Raça': ['Labrador', 'Poodle','Boxer','Chihuahua']
+}
+
+#Criar o DataFrame
+
+df_cachorros = pd.DataFrame(dados)
+```
+
+### Ler arquivos e transformando em DataFrame
+
+#### CSV
+```python
+df_csv = pd.read_csv('arquivo.csv')
+```
+
+#### Excel
+```python
+df_excel = pd.read_excel('planilha.xlsx', sheet_name='nome_da_planilha')
+```
+#### Json
+```python
+df_json = pd.read_json('arquivo.json')
+```
+
+#### Parquet
+```python
+df_parquet = pd.read_parquet('arquivo.parquet')
+
+```
+#### SQL
+```python
+from sqlalchemy import create_engine
+
+engine = create_engine('sqlite://banco_de_dados.db')
+query = 'select * from tabela'
+df_sql = pd.read_sql(query, engine)
+```
+
+### Primeiros métodos de DataFrame
+
+- df.head()  
+mostra as primeiras 5 linhas da tabela.
+
+- df.info()  
+mostra os nomes das colunas, se tem alguma informação faltando e os tipos daS colunas.
+
+- df.shape  
+mostra a quantidade de linhas e de colunas (x,y). Nào precisa usar parentesis é só o "shape" mesmo.
+
+- df.describe()  
+mostra contas básicas sobre a tabela, como a média, mediana, contagem, minimo, maximo.
+
+### Componentes do DataFrame
+
+A tabela pandas é como um quebra cabeças com 3 partes:
+
+- values: os valores, que são os dados mesmo.
+- columns: as etiquetas (labels) das colunas.
+- index: as etiquetas das linhas, id das linhas.
+
+### Ordenação
+
+```python
+df.sort_values(`coluna`)
+```
+Para ordenar uma coluna de forma crescente
+
+```python
+df.sort_values(`coluna`, ascending=False)
+```
+para ordenar de forma decrescente
+
+```python
+df.sort_values([`coluna1`,`coluna2`])
+```
+Para ordenar numtiplas colunas de forma crescente
+
+### Subconjuntos de linhas
+
+```python
+df_cachorros[df_cachorros[`Raça`] == `Chihuahua`]
+```
+Vai filtrar as linha onde a coluna raça seja Chihuahua.
+
+
+```python
+is_marrom_ou_cinza = df_cachorros["Cor"].isin(["Cinza","Marrom"])
+df_cachorros[is_marrom_ou_cinza]
+```
+Para filtrar com base em multiplo valores é interessante utilizar o método ".isin"
+
+### Adicionar uma nova coluna
+
+![alt text](image4.png)
+
+## Agregando Dados
+
+
