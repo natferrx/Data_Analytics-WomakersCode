@@ -331,4 +331,349 @@ Para filtrar com base em multiplo valores é interessante utilizar o método ".i
 
 ## Agregando Dados
 
+Estatísticas resumidas, como o próprio nome sugere, são números que resumem e fornecem informações sobre seu conjunto de dados.
+
+### Exemplos de funções estatísticas resumidas:
+
+#### .median()
+Calcula a mediana de um conjunto de dados, indicando o valor central quando os dados estão ordenados.
+#### .mode()
+Moda, identifica o(s) valor(es) mais frequente(s) em um conjunto de dados.
+#### .min()
+Retorna o valor mínimo em um conjunto de dados.
+#### .max()
+Retorna o valor máximo em um conjunto de dados.
+
+### Medidas de dispersão:
+
+#### .var()
+Calcula a variância, uma medida da dispersão dos dados.
+#### .std()
+Calcula o desvio padrão, indicando a dispersão média dos dados em relação à média.
+
+### Outras funções úteis:
+
+#### .sum()
+Soma todos os valores em um conjunto de dados.
+
+#### .quantile()
+Calcula um percentil específico em um conjunto de dados, indicando o valor abaixo do qual uma determinada porcentagem dos dados está.
+
+## Estatística Personalizada
+
+O método de agregação (ou agg) permite calcular estatísticas personalizadas.
+
+Exemplo:
+
+```python
+def pct50(coluna):
+    return coluna.quantile(0.50)
+
+df_cachorros['Altura (cm)'].agg(pct50)
+```
+
+resultado 23.0
+
+## Estatística Cumulativa
+
+O Pandas também possui métodos para calcular estatísticas cumulativas.
+
+Chamar "cumsum" em uma coluna não retorna apenas um número, mas um número para cada linha do DataFrame.
+
+Exemplo:
+
+```python
+df['Total Vendas Cumulativas'] = df['Vendas'].cumsum()
+```
+
+Este código cria uma nova coluna chamada "Total Vendas Cumulativas" que contém o total de vendas cumulativas para cada linha do DataFrame.
+
+Outras funções úteis:
+
+- cumprod(): Calcula o produto cumulativo de uma série.
+- cummax(): Encontra o valor máximo cumulativo em uma série.
+- cummin(): Encontra o valor mínimo cumulativo em uma série.
+
+## Excluir duplicados
+
+O método drop_duplicates do Pandas remove linhas duplicadas de um DataFrame, permitindo a criação de um novo DataFrame sem repetições com base em critérios específicos definidos pelos valores em determinadas colunas.
+
+O argumento subset especifica as colunas para identificar duplicatas, e o resultado é um DataFrame sem as linhas duplicadas.
+
+Exemplo:
+
+```python
+df = df.drop_duplicates(subset=['Coluna1', 'Coluna2'])
+```
+
+Este código remove linhas duplicadas do DataFrame df com base nos valores nas colunas 'Coluna1' e 'Coluna2'.
+
+Opções adicionais:
+
+- keep: Especifica se a primeira ou a última linha duplicada deve ser mantida.
+- inplace: Modifica o DataFrame original em vez de criar um novo.
+
+## Contagem de Valores Únicos
+
+O método value_counts() do pandas retorna uma contagem de valores únicos em uma coluna de um DataFrame, fornecendo uma série que lista os valores distintos junto com a frequência de cada valor. Isso é útil para entender a distribuição dos dados e identificar os valores mais comuns em uma determinada coluna.
+
+Exemplo:
+
+```python
+import pandas as pd
+
+#Criar um DataFrame
+df = pd.DataFrame({'coluna': ['A', 'B', 'A', 'C', 'B']})
+
+#Contar os valores únicos na coluna
+contagem_valores = df['coluna'].value_counts()
+
+#Exibir a contagem de valores
+print(contagem_valores)
+```
+Saída:
+
+A    2  
+B    2  
+C    1  
+
+
+Detalhes adicionais:
+
+- O método value_counts() pode ser usado com colunas de tipo string, inteiro ou float.
+- O método retorna uma série Pandas, que é um tipo de dados ordenado que mapeia valores para contagens.
+- A série resultante pode ser usada para calcular a frequência de cada valor, a porcentagem de cada valor e a frequência cumulativa de cada valor.
+- O método value_counts() também pode ser usado para filtrar um DataFrame por valores específicos.
+
+### método Normalize com value_counts()
+
+Por padrão, o parâmetro normalize está definido como False, o que significa que a série resultante conterá a contagem absoluta de cada valor único.
+
+Se você definir normalize como True, a série resultante conterá a frequência relativa de cada valor único, que é a contagem dividida pelo número total de valores na coluna.
+
+Exemplo:
+
+```python
+import pandas as pd
+
+# Criar um DataFrame
+df = pd.DataFrame({'coluna': ['A', 'B', 'A', 'C', 'B']})
+
+# Contar os valores únicos na coluna com normalize=False
+contagem_valores_absoluta = df['coluna'].value_counts(normalize=False)
+
+# Contar os valores únicos na coluna com normalize=True
+contagem_valores_relativa = df['coluna'].value_counts(normalize=True)
+
+# Exibir a contagem de valores
+print('Contagem absoluta:')
+print(contagem_valores_absoluta)
+
+print('Contagem relativa:')
+print(contagem_valores_relativa)
+```
+
+
+Contagem absoluta:  
+A    2  
+B    2  
+C    1  
+
+Contagem relativa:  
+A    0.4  
+B    0.4  
+C    0.2  
+
+Observações:
+
+- A opção normalize=True pode ser útil para comparar a frequência (porcentagem) de valores em colunas com diferentes tamanhos.
+- A opção normalize=False pode ser útil para obter a contagem absoluta de valores específicos.
+
+## Agrupamento de Dados
+
+O método groupby() do Pandas é usado para agrupar um DataFrame por uma ou mais colunas, permitindo a aplicação de operações em cada grupo separadamente. 
+
+Ele cria um objeto de grupo que pode ser combinado com várias funções de agregação, como média, soma, mínimo, máximo, entre outras. 
+
+Esse método é frequentemente usado em conjunto com outros métodos, como agg, para calcular estatísticas resumidas para cada grupo de dados.
+
+Exemplo:
+
+```python
+import pandas as pd
+
+# Criar um DataFrame
+df = pd.DataFrame({'coluna1': ['A', 'B', 'A', 'C', 'B'], 'coluna2': [1, 2, 3, 4, 5]})
+
+# Agrupar o DataFrame pela coluna1
+agrupado = df.groupby('coluna1')
+
+# Calcular a média da coluna2 para cada grupo
+media_por_grupo = agrupado['coluna2'].mean()
+
+# Exibir a média por grupo
+print(media_por_grupo)
+```
+
+
+Saída:
+
+A    2.5  
+B    3.5  
+C    4.0  
+
+Detalhes adicionais:
+
+- O método groupby() pode ser usado com colunas de tipo string, inteiro ou float.
+- O método retorna um objeto groupby, que é um tipo de dados que permite iterar pelos grupos e aplicar funções a cada grupo.
+- O objeto groupby pode ser usado com várias funções de agregação, como mean(), sum(), min(), max(), count(), etc.
+- O método groupby também pode ser usado para filtrar um DataFrame por valores específicos.
+
+## Tabelas Dinânicas (Pivot Table)
+
+As tabelas dinâmicas são ferramentas poderosas para resumir e analisar grandes conjuntos de dados. Elas permitem que você organize e visualize seus dados de forma eficiente, facilitando a identificação de tendências e padrões.
+
+Noções básicas:
+
+- Uma tabela dinâmica é composta por linhas, colunas e valores.
+- As linhas e colunas representam diferentes índices e colunas do DataFrame.
+- Os valores representam as medidas que você deseja analisar.
+
+
+Criando uma tabela dinâmica com Pandas:
+
+- Importe a biblioteca Pandas.
+- Carregue seus dados em um DataFrame.
+- Utilize a função pivot_table() do Pandas para criar a tabela dinâmica.
+
+Exemplo:
+
+```python
+import pandas as pd
+
+# Criar um DataFrame
+df = pd.DataFrame({'Data': ['2023-01-01', '2023-01-02', '2023-01-03', '2023-01-04', '2023-01-05'],
+                   'Produto': ['A', 'B', 'A', 'B', 'C'],
+                   'Venda': [100, 200, 300, 400, 500]})
+
+# Criar a tabela dinâmica
+tabela_dinamica = df.pivot_table(values='Venda', index='Data', columns='Produto', aggfunc=sum)
+
+# Exibir a tabela dinâmica
+print(tabela_dinamica)
+```
+
+Saída:
+
+Data      A      B      C  
+2023-01-01  100   NaN   NaN  
+2023-01-02  NaN   200   NaN  
+2023-01-03  300   NaN   NaN  
+2023-01-04  NaN   400   NaN  
+2023-01-05  NaN   NaN   500  
+
+Benefícios:
+
+- As tabelas dinâmicas facilitam a visualização de grandes conjuntos de dados.
+- Permitem a rápida identificação de tendências e padrões.
+- Permitem a comparação de diferentes categorias de dados.
+- Permitem a filtragem e segmentação de dados.
+
+### Substituir valores faltosos
+
+Se definirmos o argumento margins como True, a última linha e a última coluna da tabela dinâmica contêm a média de todos os valores na coluna ou linha, excluindo os valores ausentes que foram preenchidos com zeros.
+
+## Indice e Fatiamento do Dataframe
+
+Usar um index faz o subset mais faceis de se filtrar.
+
+### Alterando Indices
+
+Podemos colocar uma das colunas como índice do Dataframe usando o método set_index
+
+### Removendo o Index
+
+Podemos utilizar o reset_index
+
+### Ordenando o Index
+
+pode-se utiliozar o sort_index()
+
+### Usando loc para acessar e modificar valores em um DataFrame
+
+O método loc do Pandas é uma ferramenta poderosa para acessar e modificar valores específicos em um DataFrame. 
+
+Ele permite que você selecione linhas e colunas por rótulo ou índice, e defina novos valores para as células selecionadas.
+
+Exemplo:
+
+```python
+import pandas as pd
+
+# Criar um DataFrame
+df = pd.DataFrame({'coluna1': ['A', 'B', 'C', 'D'], 'coluna2': [1, 2, 3, 4]})
+
+# Acessar um único valor
+valor = df.loc[1, 'coluna1']
+
+# Modificar um único valor
+df.loc[1, 'coluna2'] = 5
+
+# Acessar um conjunto de valores
+valores = df.loc[0:2, 'coluna1']
+
+# Modificar um conjunto de valores
+df.loc[0:2, 'coluna2'] = [10, 20]
+
+# Exibir o DataFrame
+print(df)
+```
+
+Saída:
+
+   coluna1  coluna2  
+0        A       10  
+1        B       20  
+2        C        3  
+3        D        4  
+
+Detalhes adicionais:
+
+- O método loc pode ser usado para acessar e modificar valores em DataFrames de qualquer tamanho.
+- O método loc pode ser usado para selecionar linhas e colunas por nome ou por posição.
+- O método loc pode ser usado para definir novos valores para as células selecionadas.
+
+## Gráficos e Valores Faltosos
+
+### Gráficos
+
+A biblioteca básica de visualização de dados é a matplotlib
+
+```python
+from matplotlib import pyplot as plt
+```
+
+### Lidar com valores faltosos
+
+Em um datafreme do pandas, os valores ausentes são indicados com NaN, que significa Não é um Número. (not a number)
+
+### Detectar valores nulos
+
+isna() é um método que pode ser utilizado para encontrar os valores nulos. Retorna "True" para registros nulos.
+
+any() se usado junto com o isna() ele retorna qual coluna tem algum valor nulo
+
+sum() se usado junto com o isna() ele retorna a quantidade de valores nulos nas colunas
+
+.plot se usada junto com o sum e o isna() você enxerga a quantidade de dados nulos por coluna
+
+### Removendo dados nulos
+
+o método dropna() no pandas é utilizado para remover linhas ou colunas de um dataframe que contenha valores nulos (NaN), facilitando a limpeza e preparação dos dados. Ele pode ser usado para remover linhas com pelo menos um NaN (padrão) ou colunas específicas, proporcionando flexibilidade na manipulação de conjuntos de dados.
+
+### Substituindo Valores Nulos
+
+O método fillna() no pandas é utilizado para preencher valores nulos (NaN) em um DataFrame com valores específicos. Ele oferece a capacidade de substituir os valores ausenter por um número constante, pela média, moda, mediana; ou utilizar lógicas mais avançadas, proporcionando flexibilidade na manipulação de dados faltantes.
+
+Uma boa prática é utilizar junto com o método o "numeric_only = true" para garantir que essa substituição não dê erros no futuro.
 
