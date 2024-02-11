@@ -680,3 +680,8 @@ Uma boa prática é utilizar junto com o método o "numeric_only = true" para ga
 # Data Wrangling com Python
 
 Pode ser traduzido como Manipulação de dados ou Tratamento de Dados. TRata-se de preparar os dados para que possam ser facilmente explorados e analisados.
+
+# Pipeline de Dados
+
+Pipeline de dados é um sistema que facilita a coleta, processamento e movimentação de dados de uma fonte para um destino específico. Uma pipeline é uma série de processos ou etapas interligadas que são usadas para mover e transformar dados de um ponto de origem para um destino específico.
+
