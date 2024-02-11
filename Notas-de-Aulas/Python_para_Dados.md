@@ -677,3 +677,6 @@ O método fillna() no pandas é utilizado para preencher valores nulos (NaN) em 
 
 Uma boa prática é utilizar junto com o método o "numeric_only = true" para garantir que essa substituição não dê erros no futuro.
 
+# Data Wrangling com Python
+
+Pode ser traduzido como Manipulação de dados ou Tratamento de Dados. TRata-se de preparar os dados para que possam ser facilmente explorados e analisados.
